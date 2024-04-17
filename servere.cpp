@@ -4,13 +4,11 @@
 using namespace std;
 
 // function that calculats the power of the cluster for a certain voltage
-double min_pow(int N, vector<pair<int, int>> servers, double current)
-{
+double min_pow(int N, vector<pair<int, int>> servers, double current) {
     double minn = DBL_MAX;
 
     // iterate through the server list
-    for (int i = 0; i < N; i++)
-    {
+    for (int i = 0; i < N; i++) {
         // find the serverver with the minimum power
         if (((double)servers[i].first -
              abs((double)servers[i].second - current)) < minn)
@@ -25,11 +23,8 @@ double min_pow(int N, vector<pair<int, int>> servers, double current)
 // try to find the global maximum of the function
 // that represents the power of the server cluster
 void bsearch_maximum(double min_val, double max_val, int N,
-                     vector<pair<int, int>> servers, double &result)
-{
-
-    if (min_val <= max_val)
-    {
+                     vector<pair<int, int>> servers, double &result) {
+    if (min_val <= max_val) {
         // get the middle of the interval
         // and the values of the powers next to the middle
         double mid = floor(((min_val + max_val) / 10.0) * 10.0) / 2.0;
@@ -37,8 +32,7 @@ void bsearch_maximum(double min_val, double max_val, int N,
         double rigth_pow = min_pow(N, servers, mid + 0.1);
 
         // if the powers next to the middle are equal, we found the maximum
-        if (left_pow == rigth_pow)
-        {
+        if (left_pow == rigth_pow) {
             result = min_pow(N, servers, mid);
         }
 
@@ -50,9 +44,7 @@ void bsearch_maximum(double min_val, double max_val, int N,
     }
 }
 
-int main()
-{
-
+int main() {
     // open the files for reading and writing
     ifstream in("servere.in");
     ofstream out("servere.out");
@@ -65,13 +57,11 @@ int main()
     int min_nec_voltage = INT_MAX, max_nec_voltage = INT_MIN;
     int aux;
     vector<pair<int, int>> servers(N);
-    for (int i = 0; i < N; i++)
-    {
+    for (int i = 0; i < N; i++) {
         in >> aux;
         servers[i].first = aux;
     }
-    for (int i = 0; i < N; i++)
-    {
+    for (int i = 0; i < N; i++) {
         in >> aux;
         servers[i].second = aux;
 

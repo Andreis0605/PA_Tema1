@@ -6,8 +6,7 @@
 using namespace std;
 
 // function that calculates the power of a number in logarithmic time
-unsigned long long logarithmic_power(unsigned long long base, int exponent)
-{
+unsigned long long logarithmic_power(unsigned long long base, int exponent) {
     // base case
     if (exponent == 0)
         return 1;
@@ -24,9 +23,7 @@ unsigned long long logarithmic_power(unsigned long long base, int exponent)
     return (base * logarithmic_power(aux_base, (exponent - 1) / 2)) % LIMIT;
 }
 
-int main()
-{
-
+int main() {
     // open the files for reading and writing
     ifstream in("colorare.in");
     ofstream out("colorare.out");
@@ -44,8 +41,7 @@ int main()
     bool first_ever = true, is_V, prev_seq_is_V;
 
     // reading and processing the rectangles
-    for (int i = 0; i < N; i++)
-    {
+    for (int i = 0; i < N; i++) {
         // read an area
         in >> aux_int;
         in.get();
@@ -62,61 +58,56 @@ int main()
         combinations = combinations % LIMIT;
 
         // treat the first area separately
-        if (first_ever)
-        {
-
-            if (is_V)
-            {
+        if (first_ever) {
+            if (is_V) {
                 // the first area starts with a vertical rectangle
                 combinations = (combinations *
                                 ((3 *
                                   (logarithmic_power(2, aux_int - 1))) %
                                  LIMIT) %
                                 LIMIT);
-            }
-            else
+            } else {
                 // the first area starts with a horizontal rectangle
                 combinations = (combinations *
                                 ((6 *
                                   (logarithmic_power(3, aux_int - 1))) %
                                  LIMIT) %
                                 LIMIT);
+            }
 
             // mark that we processed the first area and save it's type
             first_ever = false;
             prev_seq_is_V = is_V;
-        }
-        else
-        {
+        } else {
             // processing the other areas(other than the first one)
-            if (prev_seq_is_V)
-            {
+            if (prev_seq_is_V) {
                 // the area before was made of vertical rectangles
-                if (is_V)
-                {
+                if (is_V) {
                     // this area is made with vertical rectangles
                     combinations = (combinations *
-                                    ((logarithmic_power(2, aux_int)) % LIMIT) % LIMIT);
-                }
-                else
+                                    ((logarithmic_power(2, aux_int))
+                                     % LIMIT) % LIMIT);
+                } else {
                     // this area is made out of horizontal rectangles
                     combinations = (combinations *
                                     ((2 *
                                       (logarithmic_power(3, aux_int - 1))) %
                                      LIMIT) %
                                     LIMIT);
-            }
-            else
-            {
-                // /the area before was made of horizontal rectangles
-                if (is_V)
-                {
-                    // this area is made with vertical rectangles
-                    combinations = (combinations * ((logarithmic_power(2, aux_int - 1)) % LIMIT)) % LIMIT;
                 }
-                else
+            } else {
+                // /the area before was made of horizontal rectangles
+                if (is_V) {
+                    // this area is made with vertical rectangles
+                    combinations = (combinations *
+                                    ((logarithmic_power(2, aux_int - 1))
+                                     % LIMIT)) % LIMIT;
+                } else {
                     // this area is made out of horizontal rectangles
-                    combinations = (combinations * ((logarithmic_power(3, aux_int)) % LIMIT)) % LIMIT;
+                    combinations = (combinations *
+                                    ((logarithmic_power(3, aux_int)) % LIMIT)) %
+                                   LIMIT;
+                }
             }
         }
 
