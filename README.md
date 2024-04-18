@@ -21,4 +21,4 @@
 ### Functii declarate si folosite la rezolvarea problemei
 
 - `unsigned long long logarithmic_power(unsigned long long base, int exponent`
-    >Functia primeste o baza si un exponet. Aceasta efectueaza ridicarea la putere in timp logaritmic, asa cum a fost prezentata la curs si la laborator. Valoarea rezultatului este limitata de valoarea 10^9^ + 7 data de problema
+    >Functia primeste o baza si un exponet. Aceasta efectueaza ridicarea la putere in timp logaritmic, asa cum a fost prezentata la curs si la laborator. Valoarea rezultatului este limitata de valoarea 10<sup>9</sup> + 7 data de problema
