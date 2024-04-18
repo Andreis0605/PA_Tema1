@@ -18,7 +18,34 @@
 
 ## Problema 2:
 
+### Principiu de rezolvare
+
+>Se observa ca numarul total de combinatii de culori este dat de o formula. Aceasta depinde de tipul primei zone si de trecerile de la o zona la alta (in special de la orizontal la vertical si invers). Pentru a putea calcula numarul de zone, folosim ridicarea la putere in timp logaritmic, deoarece valorile exponentilor pot fi foarte mari, iar o ridicare la puterere liniara nu ar fi eficienta. In plus, aceasta metoda usureaza limitarea valorilor la maximul impus de problema.
+
 ### Functii declarate si folosite la rezolvarea problemei
 
 - `unsigned long long logarithmic_power(unsigned long long base, int exponent`
-    >Functia primeste o baza si un exponet. Aceasta efectueaza ridicarea la putere in timp logaritmic, asa cum a fost prezentata la curs si la laborator. Valoarea rezultatului este limitata de valoarea 10<sup>9</sup> + 7 data de problema
+    >Functia primeste o baza si un exponet. Aceasta efectueaza ridicarea la putere in timp logaritmic, asa cum a fost prezentata la curs si la laborator. Valoarea rezultatului este limitata de valoarea 10<sup>9</sup> + 7 data de problema.
+
+## Problema 3: Compresie
+
+### Principiu de rezolvare
+
+>Pentru a putea rezolva problema, am ales sa parcurg cele doua siruri in paralel (similar cu interclasarea), folosind doua sume (una pentru fiecare sir). Iinitial, cele doua sume au valoarea primului element din fiecare sir. Apoi, principiul de rezolvare este urmatorul: daca cele doua sume sunt egale, am gasit o zona care se poate compresa, o numar, resetez sumele si trec la urmatorul element in ambele siruri; daca nu, adun la cea mai mica suma elementul urmator din sirul respectiv. La final, verific ca am terminat de parcurs ambele siruri. Daca nu, inseamna ca nu se poate efectua compresia.
+
+## Problema 4: Criptat
+
+### Principiu de rezolvare
+
+>La citire, prelucrez cuvintele pentru a le retine doar frecventa literelor si lungimea. Folosesc un vector de codificari pentru a da fiecarei din cele 8 litere o valoare pentru a le putea marca mai usor in vectorii de frecventa.
+
+>
+
+### Functii si structuri declarate si folosite la rezolvarea problemei
+
+- `typedef struct word { int frq[10]; int len; } word;`
+
+    > Structura care va retine frecventa literelor unui cuvant si lungimea acesuia
+
+- `int total_len_freq_array(int *array)`
+    > Functie care primeste un vector de frecventa si face suma tuturor campurilor din acel vector (aceasta functie este corecta doar pentru problema curenta, deoarece depinde de limitarile acesteia).
