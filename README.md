@@ -57,14 +57,11 @@
 
 > Pentru fiecare litera in parte, folosesc un vector cu semnificatia dp[i] = frecventa literei curente in parola de lungimea i. La fiecare pas trebuie sa verific ca o parola de acesata lungime este posibila. La sfarsit, parcurg vectorul si caut cea mai lunga parola posibila care are litera curenta dominanta. Dupa ce efectuez aceasta operatiune pentru fiecare litera in parte, voi gasi cea mai lunga parola posibila.
 
-### Functii si structuri declarate si folosite la rezolvarea problemei
+### Structuri de date declarate si folosite la rezolvarea problemei
 
 - `typedef struct word { int frq[10]; int len; } word;`
 
     > Structura care va retine frecventa literelor unui cuvant si lungimea acesuia
-
-- `int total_len_freq_array(int *array)`
-    > Functie care primeste un vector de frecventa si face suma tuturor campurilor din acel vector (aceasta functie este corecta doar pentru problema curenta, deoarece depinde de limitarile acesteia). Deoarece problema garanteaza existenta doar a 8 litere distincte, complexiatea acestei functii este O(8) = O(1).
 
 ### Complexitatea algoritmului
 

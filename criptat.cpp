@@ -8,15 +8,6 @@ typedef struct word {
     int len;
 } word;
 
-// function that returns the sum of all the fields in a frequency array
-int total_len_freq_array(int *array) {
-    int sum = 0;
-    for (int i = 1; i <= 8; i++) {
-        sum += array[i];
-    }
-    return sum;
-}
-
 int main() {
     // open the files for reading and writing
     ifstream in("criptat.in");
@@ -36,8 +27,8 @@ int main() {
     // vector for reading the words
     char aux_string[300];
 
-    // vector for total frequency of letters
-    int *tot_freq = (int *)calloc(8, sizeof(int));
+    // maximum length of a possible password
+    int max_len_pos_psswd = 0;
 
     // read the words from the file
     in.get();
@@ -61,12 +52,9 @@ int main() {
             words[i].frq[codif[(int)(aux_string[j] - 'a')]]++;
 
             // mark the letter in the general frequency array
-            tot_freq[codif[(int)(aux_string[j] - 'a')]]++;
+            max_len_pos_psswd++;
         }
     }
-
-    // calculate the maxium possible length of a password
-    int max_len_pos_psswd = total_len_freq_array(tot_freq);
 
     // calculate all possible lengths of the password
     vector<bool> pos_lens(max_len_pos_psswd + 1, false);
@@ -125,7 +113,6 @@ int main() {
     // eliberarea memoriei
     free(codif);
     free(words);
-    free(tot_freq);
 
     // close the files
     in.close();
