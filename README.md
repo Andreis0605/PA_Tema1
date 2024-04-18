@@ -83,3 +83,5 @@
 ### Complexitatea algoritmului
 > Complexitatea verificarii cazurilor de baza este O(1). Complexitatea cazului general este O(N). Complexitatea intregului algoritm este O(N). 
 
+# Punctaj pe local: 137p
+

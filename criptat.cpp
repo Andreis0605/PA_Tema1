@@ -97,12 +97,13 @@ int main() {
         for (int j = max_len_pos_psswd; j >= 0; j--) {
             // check if the current length is possible
             // and it has at least one aparition of the current letter
-            if (dp[j] != 0 && pos_lens[j]) {
+            if (dp[j] != 0 && pos_lens[j] &&
+                (((double)j / (double)dp[j]) < 2.0) && j > max_len) {
                 // if the password has a dominant letter,
                 // check if it is the longest password ever
-                max_len = ((((double)j / (double)dp[j]) < 2))
-                              ? max(max_len, j)
-                              : max_len;
+                // if yes, save it and go to the next letter
+                max_len = j;
+                break;
             }
         }
     }
