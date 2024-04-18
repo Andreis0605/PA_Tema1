@@ -1,3 +1,5 @@
+# Mentiune: Toate implmementarile pleaca de la algoritmi prezentati in cadrul cursului sau laboratorului
+
 # Tema 1 PA
 
 ## Problema 1: Servere
@@ -11,10 +13,14 @@
 ### Functii declarate si folosite la rezolvarea problemei
 
 - `double min_pow(int N, vector<pair<int, int>> servers, double current)`
-    > Functie care primeste un vector de servere, lungimea acestuia si o tensiunea de alimentare si returneaza puterea de calcul a clusterului de servere, calculata dupa formula din enunt 
+    > Functie care primeste un vector de servere, lungimea acestuia si o tensiunea de alimentare si returneaza puterea de calcul a clusterului de servere, calculata dupa formula din enunt. Complexitatea acestei functii este O(N).
 
 - `void bsearch_maximum(double min_val, double max_val, int N,vector<pair<int, int>> servers, double &result)`
-    > Functia primeste un interval de tensiuni de alimentare, un vector de servere, numarul de elemente din vector si o variablia in care va intoarce rezultatul. Aceasta cauta maximul functiei de putere in intervalul dat. Functia gaseste mijlocul intervalului si se uita in stanga (mijloc - 0.1) si in dreapta (mijloc + 0.1) si calculeaza puterea clusterului pentru aceste doua tensiuni de alimentare. Daca puterile in stanga si in dreapta sunt egale, acel punct e maxim. Daca nu, se deduce panta si se continua cautarea inspre maxim. 
+    > Functia primeste un interval de tensiuni de alimentare, un vector de servere, numarul de elemente din vector si o variablia in care va intoarce rezultatul. Aceasta cauta maximul functiei de putere in intervalul dat. Functia gaseste mijlocul intervalului si se uita in stanga (mijloc - 0.1) si in dreapta (mijloc + 0.1) si calculeaza puterea clusterului pentru aceste doua tensiuni de alimentare. Daca puterile in stanga si in dreapta sunt egale, acel punct e maxim. Daca nu, se deduce panta si se continua cautarea inspre maxim. Complexitatea acestei functii este O(N * logN)
+
+### Complexitatea algoritmului
+
+> Fie N numarul de servere. Complexitatea citirii este O(N). Cautarea binara se efectueaza in O(N * logN). Complexitatea intregului algoritm este O(N * logN).
 
 ## Problema 2:
 
@@ -25,13 +31,21 @@
 ### Functii declarate si folosite la rezolvarea problemei
 
 - `unsigned long long logarithmic_power(unsigned long long base, int exponent`
-    >Functia primeste o baza si un exponet. Aceasta efectueaza ridicarea la putere in timp logaritmic, asa cum a fost prezentata la curs si la laborator. Valoarea rezultatului este limitata de valoarea 10<sup>9</sup> + 7 data de problema.
+    >Functia primeste o baza si un exponet. Aceasta efectueaza ridicarea la putere in timp logaritmic, asa cum a fost prezentata la curs si la laborator. Valoarea rezultatului este limitata de valoarea 10<sup>9</sup> + 7 data de problema. Complexitatea acestei functii este O(log exponent).
+
+### Complexitatea algoritmului
+
+> Fie N numarul de zone si exp lungimea unei zone oarecare. Complexitate algoritmului este O(N * max(exp)), unde max(exp) este valoarea maxima a unui exponent. 
 
 ## Problema 3: Compresie
 
 ### Principiu de rezolvare
 
 > Pentru a putea rezolva problema, am ales sa parcurg cele doua siruri in paralel (similar cu interclasarea), folosind doua sume (una pentru fiecare sir). Iinitial, cele doua sume au valoarea primului element din fiecare sir. Apoi, principiul de rezolvare este urmatorul: daca cele doua sume sunt egale, am gasit o zona care se poate compresa, o numar, resetez sumele si trec la urmatorul element in ambele siruri; daca nu, adun la cea mai mica suma elementul urmator din sirul respectiv. La final, verific ca am terminat de parcurs ambele siruri. Daca nu, inseamna ca nu se poate efectua compresia.
+
+### Complexitatea algoritmului
+
+> Fie N dimensiunea primului sir si M dimensiunea celui de-al doilea sir. Complexitatea citirii sirurilor este O(N + M). Complexitatea parcurgerii celor doi vectori este O(N + M). Complexitatea algoritmului este O(N + M).
 
 ## Problema 4: Criptat
 
@@ -50,7 +64,11 @@
     > Structura care va retine frecventa literelor unui cuvant si lungimea acesuia
 
 - `int total_len_freq_array(int *array)`
-    > Functie care primeste un vector de frecventa si face suma tuturor campurilor din acel vector (aceasta functie este corecta doar pentru problema curenta, deoarece depinde de limitarile acesteia).
+    > Functie care primeste un vector de frecventa si face suma tuturor campurilor din acel vector (aceasta functie este corecta doar pentru problema curenta, deoarece depinde de limitarile acesteia). Deoarece problema garanteaza existenta doar a 8 litere distincte, complexiatea acestei functii este O(8) = O(1).
+
+### Complexitatea algoritmului
+
+> Fie N numarul de cuvinte si len lungimea unui cuvant. Complexitatea citirii este O(N * max(len)), unde max(len) este lungimea celui mai mare cuvant. Complexitatea calcului lungimilor posibile este O(N * tot_len), unde tot_len este lungimea celei mai lungi parole posibile. Complexitatea cautarii este O(k * N * tot_len), unde k este numarul de litere distincte. Cum k ∈ {1,2,..,8}, putem spune ca acesasta complexitate este O(N * tot_len). Astfel, complexitatea algoritmului este O(N * max(len)).
 
 ## Problema 5: Oferta
 
@@ -60,7 +78,11 @@
 ### Functii declarate si folosite la rezolvarea problemei
 
 - `double two_discount(int product1, int product2)`
-    > Functia primeste pretul a doua produse si returneaza pretul total dupa aplicarea ofertei pentru doua produse.
+    > Functia primeste pretul a doua produse si returneaza pretul total dupa aplicarea ofertei pentru doua produse. Complexitatea acestei functii este O(1).
 
 - `double three_discount(int product1, int product2, int product3)`
-    > Functia primeste pretul a trei produse si returneaza pretul total dupa aplicarea ofertei pentru trei produse.
+    > Functia primeste pretul a trei produse si returneaza pretul total dupa aplicarea ofertei pentru trei produse. Complexitatea acestei functii este O(1).
+
+### Complexitatea algoritmului
+> Complexitatea verificarii cazurilor de baza este O(1). Complexitatea cazului general este O(N). Complexitatea intregului algoritm este O(N). 
+
