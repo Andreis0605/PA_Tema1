@@ -31,15 +31,17 @@
 
 ### Principiu de rezolvare
 
->Pentru a putea rezolva problema, am ales sa parcurg cele doua siruri in paralel (similar cu interclasarea), folosind doua sume (una pentru fiecare sir). Iinitial, cele doua sume au valoarea primului element din fiecare sir. Apoi, principiul de rezolvare este urmatorul: daca cele doua sume sunt egale, am gasit o zona care se poate compresa, o numar, resetez sumele si trec la urmatorul element in ambele siruri; daca nu, adun la cea mai mica suma elementul urmator din sirul respectiv. La final, verific ca am terminat de parcurs ambele siruri. Daca nu, inseamna ca nu se poate efectua compresia.
+> Pentru a putea rezolva problema, am ales sa parcurg cele doua siruri in paralel (similar cu interclasarea), folosind doua sume (una pentru fiecare sir). Iinitial, cele doua sume au valoarea primului element din fiecare sir. Apoi, principiul de rezolvare este urmatorul: daca cele doua sume sunt egale, am gasit o zona care se poate compresa, o numar, resetez sumele si trec la urmatorul element in ambele siruri; daca nu, adun la cea mai mica suma elementul urmator din sirul respectiv. La final, verific ca am terminat de parcurs ambele siruri. Daca nu, inseamna ca nu se poate efectua compresia.
 
 ## Problema 4: Criptat
 
 ### Principiu de rezolvare
 
->La citire, prelucrez cuvintele pentru a le retine doar frecventa literelor si lungimea. Folosesc un vector de codificari pentru a da fiecarei din cele 8 litere o valoare pentru a le putea marca mai usor in vectorii de frecventa.
+> La citire, prelucrez cuvintele pentru a le retine doar frecventa literelor si lungimea. Folosesc un vector de codificari pentru a da fiecarei din cele 8 litere o valoare pentru a le putea marca mai usor in vectorii de frecventa.
 
->
+> Dupa aceea, calculez lungimea celei mai mari parole posibile si marchez intr-un vector toate lungimile posibile ale parolei
+
+> Pentru fiecare litera in parte, folosesc un vector cu semnificatia dp[i] = frecventa literei curente in parola de lungimea i. La fiecare pas trebuie sa verific ca o parola de acesata lungime este posibila. La sfarsit, parcurg vectorul si caut cea mai lunga parola posibila care are litera curenta dominanta. Dupa ce efectuez aceasta operatiune pentru fiecare litera in parte, voi gasi cea mai lunga parola posibila.
 
 ### Functii si structuri declarate si folosite la rezolvarea problemei
 
@@ -49,3 +51,16 @@
 
 - `int total_len_freq_array(int *array)`
     > Functie care primeste un vector de frecventa si face suma tuturor campurilor din acel vector (aceasta functie este corecta doar pentru problema curenta, deoarece depinde de limitarile acesteia).
+
+## Problema 5: Oferta
+
+### Pirncipiu de rezolvare
+> Initial, tratez cele trei cazuri de baza: cand am un singur produs, doua produse sau trei produse. In continuare, tratez cazul general. Folosesc un vector cu semnificatia dp[i] = pretul cel mai mic pe care il putem obtine folosind i produse. Marchez cazurile de baza si incep sa calculez valorile din vector folosind formula de recurenta(in care p1, p2, p3 este o secventa de produse, in aceasta ordine) : dp[i] = min(dp[i-1] + p3, dp[i-2] + oferta_doua(p2, p3), dp[i-3] + oferta_trei(p1, p2, p3)). La final, valoarea cautata se gaseste in dp[N].
+
+### Functii declarate si folosite la rezolvarea problemei
+
+- `double two_discount(int product1, int product2)`
+    > Functia primeste pretul a doua produse si returneaza pretul total dupa aplicarea ofertei pentru doua produse.
+
+- `double three_discount(int product1, int product2, int product3)`
+    > Functia primeste pretul a trei produse si returneaza pretul total dupa aplicarea ofertei pentru trei produse.
