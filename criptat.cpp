@@ -122,6 +122,11 @@ int main() {
     // print the result
     out << max_len;
 
+    // eliberarea memoriei
+    free(codif);
+    free(words);
+    free(tot_freq);
+
     // close the files
     in.close();
     out.close();
